@@ -12,3 +12,5 @@ if (response.status == 200) {
   console.log(`I got something else! Looks like a Status: ${response.status}!.`, response.body);
 }
 ```
+
+###### ToDo: Improve this!
