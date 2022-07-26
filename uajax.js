@@ -1,5 +1,5 @@
 /**
- * MDAJAX
+ * UAJAX
  * @description A universal AJAX module.
  * @author Mateusz Dziurkiewicz
  *
@@ -8,18 +8,18 @@
  * @param {Object} data Optional payload.
  *
  * @returns {Promise} API Response
- * @example const response = await mdajax('get', '/api/v1/my-account/social');
+ * @example const response = await uajax('get', '/api/v1/my-account/social');
  */
 
-var mdajax_debug = false;
+uajax_debug = true;
 
-mdajax = async (method, path, data = {}) => {
-	// If mdajax_debug is enabled, we'll output what the module is doing to the console.
+uajax = async (method, path, data = {}, headers = {}) => {
+	// If uajax_debug is enabled, we'll output what the module is doing to the console.
 	let tx = 'color: rgb(0, 255, 145';
-	let rx = 'color: rgb(0, 255, 145';
+	let rx = 'color: rgb(52, 164, 250';
 
 	if (method.toUpperCase() == 'GET') {
-		if (mdajax_debug) {
+		if (uajax_debug) {
 			console.log('GET %c>>>', tx, path);
 		}
 
@@ -29,13 +29,14 @@ mdajax = async (method, path, data = {}) => {
 				url: path,
 				contentType: 'application/json',
 				dataType: 'json',
+				headers: headers,
 
 				success: (r, textStatus, xhr) => {
-					if (mdajax_debug) {
+					let response = new Response(r, xhr.status);
+
+					if (uajax_debug) {
 						console.log('GET %c<<<', rx, path, response);
 					}
-
-					let response = new Response(r, xhr.status);
 					resolve(response);
 				},
 			}).catch((xhr) => {
@@ -44,14 +45,16 @@ mdajax = async (method, path, data = {}) => {
 					response: xhr.responseText,
 				};
 
-				console.error(`${method.toUpperCase()} to ${path} encountered an exception.`, error_details);
+				if (uajax_debug) {
+					console.error(`${method.toUpperCase()} to ${path} encountered an exception.`, error_details);
+				}
 
 				let response = new Response(error_details['response'], error_details['status']);
 				resolve(response);
 			});
 		});
 	} else {
-		if (mdajax_debug) {
+		if (uajax_debug) {
 			console.log(`${method.toUpperCase()} %c>>>`, tx, path, data);
 		}
 
@@ -62,13 +65,14 @@ mdajax = async (method, path, data = {}) => {
 				data: JSON.stringify(data),
 				contentType: 'application/json',
 				dataType: 'json',
+				headers: headers,
 
 				success: (r, textStatus, xhr) => {
-					if (mdajax_debug) {
+					let response = new Response(r, xhr.status);
+
+					if (uajax_debug) {
 						console.log(`${method.toUpperCase()} %c<<<`, rx, path, response);
 					}
-
-					let response = new Response(r, xhr.status);
 					resolve(response);
 				},
 			}).catch((xhr) => {
@@ -77,7 +81,9 @@ mdajax = async (method, path, data = {}) => {
 					response: xhr.responseText,
 				};
 
-				console.error(`${method.toUpperCase()} to ${path} encountered an exception.`, error_details);
+				if (uajax_debug) {
+					console.error(`${method.toUpperCase()} to ${path} encountered an exception.`, error_details);
+				}
 
 				let response = new Response(error_details['response'], error_details['status']);
 				resolve(response);
@@ -86,12 +92,12 @@ mdajax = async (method, path, data = {}) => {
 	}
 };
 
-mdajax.upload = (path, formData, progress = false, progressBarID = '') => {
-	// If mdajax_debug is enabled, we'll output what the module is doing to the console.
+uajax.upload = (path, formData, progress = false, progressBarID = '') => {
+	// If uajax_debug is enabled, we'll output what the module is doing to the console.
 	let tx = 'color: rgb(0, 255, 145';
 	let rx = 'color: rgb(0, 255, 145';
 
-	if (mdajax_debug) {
+	if (uajax_debug) {
 		console.log('POST (File Upload) %c>>>', tx, path, data);
 	}
 
@@ -129,7 +135,7 @@ mdajax.upload = (path, formData, progress = false, progressBarID = '') => {
 			success: (r, textStatus, xhr) => {
 				let response = new Response(r, xhr.status);
 
-				if (mdajax_debug) {
+				if (uajax_debug) {
 					console.log('POST (File Upload) %c<<<', rx, path, response);
 				}
 
@@ -145,7 +151,9 @@ mdajax.upload = (path, formData, progress = false, progressBarID = '') => {
 				response: xhr.responseText,
 			};
 
-			console.error(`Failed to upload file to ${path}`, error_details);
+			if (uajax_debug) {
+				console.error(`Failed to upload file to ${path}`, error_details);
+			}
 
 			let response = new Response(error_details['response'], error_details['status']);
 			resolve(response);
@@ -156,7 +164,7 @@ mdajax.upload = (path, formData, progress = false, progressBarID = '') => {
 /**
  * Response Class
  * @author Mateusz Dziurkiewicz
- * @description Represents ar response from MDAJAX
+ * @description Represents ar response from UJAX
  *
  * @param {xhr} The XHR Response
  * @param {xhr} The XHR Status Code
