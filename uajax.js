@@ -5,7 +5,8 @@
  *
  * @param {String} method The HTTP method to use
  * @param {String} path API Path. e.g. /api/v1/my-account
- * @param {Object} data Optional payload.
+ * @param {Object} data Optional payload
+ * @param {Object} headers Optional request headers
  *
  * @returns {Promise} API Response
  * @example const response = await uajax('get', '/api/v1/my-account/social');
