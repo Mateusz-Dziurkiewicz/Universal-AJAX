@@ -1,8 +1,11 @@
 # UAJAX
 UAJAX is a Universal AJAX implementation, designed to simplify AJAX requests.
 
+## Requires
+[jQuery 3.X](https://releases.jquery.com/);
+
 ### Usage
-Just load this script in your HTML and you're good to go!
+Just load this script after jQuery in your HTML and you're good to go!
 ```html
 <script src="https://cdn.jsdelivr.net/gh/Mateusz-Dziurkiewicz/UAJAX@master/uajax.js"></script>
 ```
