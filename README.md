@@ -1,5 +1,5 @@
 # UAJAX
-UAJAX is a Universal Ajax implementation, designed to simplify Ajax requests.
+UAJAX is a Universal AJAX implementation, designed to simplify AJAX requests.
 
 ### Usage
 Just load this script in your HTML and you're good to go!
