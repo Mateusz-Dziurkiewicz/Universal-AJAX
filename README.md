@@ -25,7 +25,7 @@ async function getWeatherForecast() {
 }
 ```
 
-UAJAX support all other methods (`POST`, `PUT`, `DELETE` and `OPTIONS`), where we can provide some data and even headers if we want. Take a look!
+UAJAX supports all other methods (`POST`, `PUT`, `DELETE` and `OPTIONS`), where we can provide some data and even headers if we want. Take a look!
 
 ```js
 async function updateUsername(username) {
