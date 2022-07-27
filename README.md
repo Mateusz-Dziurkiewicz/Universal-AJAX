@@ -47,3 +47,4 @@ async function updateUsername(username) {
 	}
 }
 ```
+UAJAX's debug mode is off by default, but it can be toggled with `uajax_debug = true` in the developer console. This will log out all network events from UAJAX (including errors).
