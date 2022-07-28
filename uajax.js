@@ -16,8 +16,8 @@ uajax_debug = true;
 
 uajax = async (method, path, data = {}, headers = {}) => {
 	// If uajax_debug is enabled, we'll output what the module is doing to the console.
-	let tx = 'color: rgb(0, 255, 145';
-	let rx = 'color: rgb(52, 164, 250';
+	let tx = 'color: rgb(0, 255, 145)';
+	let rx = 'color: rgb(52, 164, 250)';
 
 	if (method.toUpperCase() == 'GET') {
 		if (uajax_debug) {
@@ -165,7 +165,7 @@ uajax.upload = (path, formData, progress = false, progressBarID = '') => {
 /**
  * Response Class
  * @author Mateusz Dziurkiewicz
- * @description Represents ar response from UJAX
+ * @description Represents a response from UJAX
  *
  * @param {xhr} The XHR Response
  * @param {xhr} The XHR Status Code
