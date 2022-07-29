@@ -14,7 +14,7 @@
 
 uajax_debug = true;
 
-uajax = async (method, path, data = {}, headers = {}) => {
+uajax = async (method, path, data = {}, headers = {}, contentType='application/json', dataType='json') => {
 	// If uajax_debug is enabled, we'll output what the module is doing to the console.
 	let tx = 'color: rgb(0, 255, 145)';
 	let rx = 'color: rgb(52, 164, 250)';
@@ -28,8 +28,8 @@ uajax = async (method, path, data = {}, headers = {}) => {
 			$.ajax({
 				method: 'GET',
 				url: path,
-				contentType: 'application/json',
-				dataType: 'json',
+				contentType: contentType,
+				dataType: dataType,
 				headers: headers,
 
 				success: (r, textStatus, xhr) => {
@@ -64,8 +64,8 @@ uajax = async (method, path, data = {}, headers = {}) => {
 				method: method.toUpperCase(),
 				url: path,
 				data: JSON.stringify(data),
-				contentType: 'application/json',
-				dataType: 'json',
+				contentType: contentType,
+				dataType: dataType,
 				headers: headers,
 
 				success: (r, textStatus, xhr) => {
