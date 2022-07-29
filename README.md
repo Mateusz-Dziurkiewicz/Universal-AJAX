@@ -48,3 +48,9 @@ async function updateUsername(username) {
 }
 ```
 UAJAX's debug mode is off by default, but it can be toggled with `uajax_debug = true` in the developer console. This will log out all network events from UAJAX (including errors).
+
+By default, `contentType` is set to `application/json` and dataType is set to `json`. This can be changed by passing in the `contentType` and/or `dataType` parameters when calling uajax:
+
+```js
+let response = await uajax('post', '/api/v1/my-endpoint', {someKey: 'some value'}, authHeaders, contentType='multipart/form-data', dataType='jsonp');
+```
