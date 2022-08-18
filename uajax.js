@@ -14,7 +14,7 @@
 
 uajax_debug = true;
 
-uajax = async (method, path, data = {}, headers = {}, contentType='application/json', dataType='json') => {
+uajax = async (method, path, data = {}, headers = {}, contentType = 'application/json', dataType = 'json') => {
 	// If uajax_debug is enabled, we'll output what the module is doing to the console.
 	let tx = 'color: rgb(0, 255, 145)';
 	let rx = 'color: rgb(52, 164, 250)';
@@ -109,7 +109,7 @@ uajax.upload = (path, formData, progress = false, progressBarID = '') => {
 
 				xhr.upload.addEventListener(
 					'progress',
-					((evnt) => {
+					function (evnt) {
 						if (evnt.lengthComputable) {
 							let progressPercentage = evnt.loaded / evnt.total;
 							progressPercentage = parseInt(progressPercentage * 100);
@@ -120,7 +120,7 @@ uajax.upload = (path, formData, progress = false, progressBarID = '') => {
 							$(`#${progressBarID}`).html(`${progressPercentage}%`);
 						}
 					},
-					false)
+					false
 				);
 
 				return xhr;
