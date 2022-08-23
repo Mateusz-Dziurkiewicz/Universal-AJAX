@@ -169,7 +169,7 @@ uajax.upload = (path, formData, progress = false, progressBarID = '', crossDomai
 /**
  * Response Class
  * @author Mateusz Dziurkiewicz
- * @description Represents a response from UAJAX
+ * @description Represents a response from UAAJAX
  *
  * @param {xhr} The XHR Response
  * @param {xhr} The XHR Status Code
