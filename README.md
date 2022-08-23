@@ -7,12 +7,7 @@ UAJAX is a Universal AJAX implementation, designed to simplify AJAX requests.
 ## Usage
 Just load this script after jQuery in your HTML and you're good to go!
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Mateusz-Dziurkiewicz/UAJAX@master/uajax.js"></script>
-```
-
-The minified version is also available, though it does not support debug logging :)
-```html
-<script src="https://cdn.jsdelivr.net/gh/Mateusz-Dziurkiewicz/UAJAX@master/uajax-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Mateusz-Dziurkiewicz/UAJAX@master/uajax.min.js"></script>
 ```
 ---
 At the most basic level (using a `GET`), we simply asynchronously call UAJAX, providing a `method` and `path`. UAJAX will then perform your request, and return a Response object back to you - containing a `status` and `body`. Examples are always, great - so here's one!
