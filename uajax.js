@@ -14,7 +14,7 @@
 
 uajax_debug = true;
 
-uajax = async (method, path, data = {}, headers = {}, contentType = 'application/json', dataType = 'json') => {
+uajax = async (method, path, data = {}, headers = {}, contentType = 'application/json', dataType = 'json', crossDomain = false) => {
 	// If uajax_debug is enabled, we'll output what the module is doing to the console.
 	let tx = 'color: rgb(0, 255, 145)';
 	let rx = 'color: rgb(52, 164, 250)';
@@ -29,6 +29,7 @@ uajax = async (method, path, data = {}, headers = {}, contentType = 'application
 				method: 'GET',
 				url: path,
 				contentType: contentType,
+				crossDomain: crossDomain,
 				dataType: dataType,
 				headers: headers,
 
@@ -65,6 +66,7 @@ uajax = async (method, path, data = {}, headers = {}, contentType = 'application
 				url: path,
 				data: JSON.stringify(data),
 				contentType: contentType,
+				crossDomain: crossDomain,
 				dataType: dataType,
 				headers: headers,
 
@@ -93,7 +95,7 @@ uajax = async (method, path, data = {}, headers = {}, contentType = 'application
 	}
 };
 
-uajax.upload = (path, formData, progress = false, progressBarID = '') => {
+uajax.upload = (path, formData, progress = false, progressBarID = '', crossDomain = false) => {
 	// If uajax_debug is enabled, we'll output what the module is doing to the console.
 	let tx = 'color: rgb(0, 255, 145';
 	let rx = 'color: rgb(52, 164, 250)';
@@ -131,6 +133,7 @@ uajax.upload = (path, formData, progress = false, progressBarID = '') => {
 			data: formData,
 			cache: false,
 			contentType: false,
+			crossDomain: crossDomain,
 			processData: false,
 			dataType: 'json',
 
@@ -166,7 +169,7 @@ uajax.upload = (path, formData, progress = false, progressBarID = '') => {
 /**
  * Response Class
  * @author Mateusz Dziurkiewicz
- * @description Represents a response from UAJAX
+ * @description Represents a response from UAAJAX
  *
  * @param {xhr} The XHR Response
  * @param {xhr} The XHR Status Code
