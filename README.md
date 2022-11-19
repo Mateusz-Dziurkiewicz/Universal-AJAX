@@ -29,17 +29,17 @@ UAJAX supports all other methods (`POST`, `PUT`, `DELETE` and `OPTIONS`), where 
 
 ```js
 async function updateUsername(username) {
-	let data = {
+	const data = {
 		username: 'JohnDoe123',
 		newUserName: 'CaptainJackSparrow'
 	}
 
-	let headers = {
+	const headers = {
 		Authorization: 'Bearer __TOKEN__'
 	}
 
 	// You can provide any number of optional parameters after the path. Take a look at the uajax.js file to see what options are available to you.
-	let response = await uajax('post', '/api/users/user-name', {data : data, headers : headers});
+	const response = await uajax('post', '/api/users/user-name', {data : data, headers : headers});
 
 	if (response.status == 200) {
 		refreshUI();
