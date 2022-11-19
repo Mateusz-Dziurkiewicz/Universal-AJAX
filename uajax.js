@@ -6,8 +6,7 @@
  * @author Mateusz Dziurkiewicz
  */
 
-const uajaxDebug = true;
-
+var uajaxDebug = true;
 const defaults = {
   data: {},
   headers: {},
